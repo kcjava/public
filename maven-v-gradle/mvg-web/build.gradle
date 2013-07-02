@@ -1,0 +1,43 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'war'
+
+group = 'org.kcjava'
+version = '1.0-SNAPSHOT'
+description = 'mvg-web'
+
+// path to the local installation of tomcat/webapps
+project.ext.tomcatWebAppsPath = System.env.TOMCAT_HOME
+
+repositories {
+	 mavenLocal()
+     mavenRepo url: "http://repo.maven.apache.org/maven2"
+}
+dependencies {
+    compile group: 'org.kcjava', name: 'mvg-core', version:'1.0-SNAPSHOT'
+    providedCompile group: 'javax', name: 'javaee-web-api', version:'6.0'
+}
+
+
+// delete the old war from the tomcat webapps folder 
+task clearWarFromTomcat(type: Delete) {
+	if(project.tomcatWebAppsPath) {
+		def filePath = project.tomcatWebAppsPath + '/webapps/mvg-web-gradle.war'
+		println "will delete old war file at path $filePath"
+		delete filePath
+	}
+}
+// only run this task if the tomcat path exists
+clearWarFromTomcat.onlyIf { project.tomcatWebAppsPath }
+
+// copies the newly created war file to the tomcat webapps folder
+task copyWarToTomcat(type:Copy) {
+	from ('build/libs') {
+		rename "(.*)$version(.*)", '$1gradle$2'
+	}
+	into project.tomcatWebAppsPath + '/webapps'
+}
+// set up the dependencies (create the war, and clean out the existing war)
+copyWarToTomcat.dependsOn war, clearWarFromTomcat
+// only run if the tomcat path exists
+copyWarToTomcat.onlyIf { project.tomcatWebAppsPath }

@@ -1,0 +1,16 @@
+maven-v-gradle/.metadata
+maven-v-gradle/mvg-core/.gradle
+maven-v-gradle/mvg-core/.settings
+maven-v-gradle/mvg-core/.classpath
+maven-v-gradle/mvg-core/.project
+maven-v-gradle/mvg-core/bin
+maven-v-gradle/mvg-core/build
+maven-v-gradle/mvg-core/target
+maven-v-gradle/mvg-web/.gradle
+maven-v-gradle/mvg-web/.settings
+maven-v-gradle/mvg-web/.classpath
+maven-v-gradle/mvg-web/.project
+maven-v-gradle/mvg-web/bin
+maven-v-gradle/mvg-web/build
+maven-v-gradle/mvg-web/target
+maven-v-gradle/Servers
