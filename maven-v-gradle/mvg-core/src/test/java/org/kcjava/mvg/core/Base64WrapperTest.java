@@ -22,8 +22,9 @@ public class Base64WrapperTest
     public void testEncodeToBase64_happyPath()
     {        
         String value = "hello world!";
-        String expected = "aGVsbG8gd29ybGQh";        
-        String base64 = wrapper.encodeToBase64(value);        
+        String expected = "61475673624738676432397962475168";        
+        String base64 = wrapper.encodeToBase64(value); 
+       
         assertEquals(expected, base64);
     }
     
