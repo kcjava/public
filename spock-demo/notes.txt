@@ -1,0 +1,11 @@
+Test case order:
+
+- SimpleStuffSpec
+
+- InterdependentSpec
+
+- ExceptionalSpec
+
+- ExpensiveResourceSpec
+
+- StaticAndGlobalAndSpySpec

@@ -1,0 +1,20 @@
+apply plugin: 'groovy'
+apply plugin: 'eclipse'
+
+sourceCompatibility = 1.7
+version = '1.0'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+	// groovy library
+	compile 'org.codehaus.groovy:groovy:2.3.3'
+	// spock library for groovy 2.x
+	testCompile 'org.spockframework:spock-core:0.7-groovy-2.0'
+	// allows for some advanced mocking
+	testCompile 'cglib:cglib-nodep:2.2'
+}
+
